@@ -2,8 +2,10 @@ var titleArray=[];
 var questionsArray = []
 var randomNumber
 var correctAnswer
+var index =[]
+
 $(document).on("click", "#apod-button", function(){
-    var queryURL = 'https://api.nasa.gov/planetary/apod?date=2018-11-06&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
+    var queryURL = 'https://api.nasa.gov/planetary/apod?date=2017-01-26&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
     $.ajax ({
         url: queryURL,
         method: "GET"
@@ -33,73 +35,23 @@ $(document).on("click", "#apod-button", function(){
                         case 'The':
                         titleArray[i] = ' '
                         break; 
+                        case 'in':
+                        titleArray[i] = ' '
+                        break; 
                         default:
                     }
                     
                 }
-                console.log('new' +titleArray)
+                console.log('APOD Title' +titleArray)
                 trivia(titleArray);
     })
     
 
 
 })
-function trivia (){ 
-    $("#trivia-display").empty()
-   var x= $("<h3>")
-   x.addClass("question")
-   $("#trivia-display").append(x)
-   var y=$("<input>")
-   y.addClass("input-answer")
-   $("#trivia-display").append(y)
-   var z=$("<button>")
-   z.text('Go')
-   z.addClass("submit-answer")
-   $("#trivia-display").append(z)
-
-    var queryURL = 'https://opentdb.com/api.php?amount=50&category=17';
-     titleArray.push('Space','planet')
-    $.ajax ({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response){
-        console.log(response)
-        var arrayOfWords 
-        var searchQs=[]
-           for(var i=0; i<50 ; i++){
-            arrayOfWords = response.results[i].question.split(" ")
-             var filteredKeywords = arrayOfWords.filter((word) => titleArray.includes(word));
-            if (filteredKeywords.length != 0){
-                console.log(arrayOfWords[i])
-                console.log('BINGO ' + i)
-                 questionsArray.push(response.results[i].question)
-                 randomNumber = Math.floor((Math.random() * (questionsArray.length -1)) + 0);
-                console.log(questionsArray)
-                console.log(randomNumber)
-                $(".question").text(questionsArray[randomNumber])
-            }
-            if (response.results[i].question==questionsArray[randomNumber]){
-               correctAnswer = response.results[i].correct_answer;
-            }
-           }   
-        console.log(response.results)
-    })
-}
-
-$(document).on("click",".submit-answer", function(){
-    console.log('Answer is '+ correctAnswer)
-   var x = $(".input-answer").val()
-   console.log(x)
-   if (x==correctAnswer){
-       alert("Correct")
-   } else {
-       alert ("Try again")
-   }
-
-
-})
 
 $(document).on("click", "#apod-button2", function(){
+    titleArray =[]
 
     var today = new Date();
     var dd = today.getDate();
@@ -114,10 +66,8 @@ $(document).on("click", "#apod-button2", function(){
     } 
     today = yyyy + '-' + mm + '-' + dd;
     yesterday = yyyy + '-' + mm + '-' + (dd-1);
-    console.log(today);
-    console.log(yesterday);
 
-    var queryURL = 'https://api.nasa.gov/planetary/apod?date=' + yesterday+ '&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
+    var queryURL = 'https://api.nasa.gov/planetary/apod?date=' +'2017-05-13'+ '&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
     $.ajax ({
         url: queryURL,
         method: "GET"
@@ -151,8 +101,63 @@ $(document).on("click", "#apod-button2", function(){
                     }
                     
                 }
-                console.log('new' +titleArray)
+                console.log('APOD2 Title ' +titleArray)
                 trivia(titleArray);
     })
 
 })
+
+function trivia (){ 
+    $("#trivia-display").empty()
+   var x= $("<h3>")
+   x.addClass("question")
+   $("#trivia-display").append(x)
+   var y=$("<input>")
+   y.addClass("input-answer")
+   $("#trivia-display").append(y)
+   var z=$("<button>")
+   z.text('Go')
+   z.addClass("submit-answer")
+   $("#trivia-display").append(z)
+
+    var queryURL = 'https://opentdb.com/api.php?amount=50&category=17';
+       titleArray.push('Space','planet')
+       console.log("2nd "+ titleArray)
+    $.ajax ({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response)
+        var arrayOfWords =[]
+        var searchQs=[]
+           for(var i=0; i<50 ; i++){
+            arrayOfWords = response.results[i].question.split(" ")
+             var filteredKeywords = arrayOfWords.filter((word) => titleArray.includes(word));
+            if (filteredKeywords.length != 0){
+                console.log(arrayOfWords[i])
+                console.log('BINGO ' + i)
+                index.push(i)
+                 questionsArray.push(response.results[i].question)   
+            }
+        }
+                randomNumber = Math.floor((Math.random() * (questionsArray.length -1)) + 0);
+                console.log(randomNumber)
+                $(".question").text(questionsArray[randomNumber])
+               correctAnswer = response.results[index[randomNumber]].correct_answer;
+               console.log('answer '+ correctAnswer)
+        console.log(response.results)
+    })
+}
+
+$(document).on("click",".submit-answer", function(){
+    console.log('Answer is '+ correctAnswer)
+   var x = $(".input-answer").val()
+   console.log(x)
+   if (x==correctAnswer){
+       alert("Correct")
+   } else {
+       alert ("Try again")
+   }
+})
+
+
