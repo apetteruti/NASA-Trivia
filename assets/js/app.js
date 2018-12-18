@@ -1,6 +1,9 @@
+var titleArray=[];
+var questionsArray = []
+var randomNumber
+var correctAnswer
 $(document).on("click", "#apod-button", function(){
-    var titleArray=[];
-    var queryURL = 'https://api.nasa.gov/planetary/apod?api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
+    var queryURL = 'https://api.nasa.gov/planetary/apod?date=2018-11-25&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
     $.ajax ({
         url: queryURL,
         method: "GET"
@@ -17,45 +20,92 @@ $(document).on("click", "#apod-button", function(){
                 titleArray=(response.title.split(" "))
                 console.log(titleArray)
                 for (var i=0; i<titleArray.length;i++){
-                    if (titleArray[i]== ('The'||'a'||'the' ||'by'||'in')){
-                        titleArray[i]=' ';
+                    switch (titleArray[i]){
+                        case 'the':
+                        titleArray[i] = ' '
+                        break;
+                        case 'by':
+                        titleArray[i] = ' '
+                        break;
+                        case 'of':
+                        titleArray[i] = ' '
+                        break; 
+                        case 'The':
+                        titleArray[i] = ' '
+                        break; 
+                        default:
                     }
+                    
                 }
+                console.log('new' +titleArray)
                 trivia(titleArray);
     })
     
-//   var words = ['Solar', 'Space', 'planet']
 
-     function trivia (){ 
+
+})
+function trivia (){ 
     var queryURL = 'https://opentdb.com/api.php?amount=50&category=17';
     //  titleArray.push('Solar','Space','planet')
     $.ajax ({
         url: queryURL,
         method: "GET"
     }).then(function(response){
+        console.log(response)
         var arrayOfWords 
-        var questionsArray = []
+        var searchQs=[]
            for(var i=0; i<50 ; i++){
             arrayOfWords = response.results[i].question.split(" ")
-             console.log(arrayOfWords)
              var filteredKeywords = arrayOfWords.filter((word) => titleArray.includes(word));
-            console.log(filteredKeywords);
             if (filteredKeywords.length != 0){
                 console.log('BINGO ' + i)
                  questionsArray.push(response.results[i].question)
-                 var randomNumber = Math.floor((Math.random() * (questionsArray.length -1)) + 0);
+                 randomNumber = Math.floor((Math.random() * (questionsArray.length -1)) + 0);
                 console.log(questionsArray)
                 console.log(randomNumber)
                 $("#question").text(questionsArray[randomNumber])
-
+            }
+            if (response.results[i].question==questionsArray[randomNumber]){
+               correctAnswer = response.results[i].correct_answer;
             }
            }
         console.log(response.results)
     })
 }
+$(document).on("click","#submit-answer", function(){
+    console.log('Answer is '+ correctAnswer)
+   var x = $("#input-answer").val()
+   console.log(x)
+   if (x==correctAnswer){
+       alert("Correct")
+   } else {
+       alert ("Try again")
+   }
+
+
 })
 
+$(document).on("click", "#apod-button2", function(){
 
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    var yesterday;
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+    today = yyyy + '-' + mm + '-' + dd;
+    yesterday = yyyy + '-' + mm + '-' + (dd-1);
+    console.log(today);
+    console.log(yesterday);
+
+    var queryURL = 'https://api.nasa.gov/planetary/apod?date=' + yesterday + '&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
+
+})
 // $(document).on("click", "#keyword", function(){
 //     event.preventDefault();
    

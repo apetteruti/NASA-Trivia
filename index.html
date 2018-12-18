@@ -11,15 +11,19 @@
 <body>
         <div class="container">
         <hr>
-        <button id="apod-button">APOD</button>
+        <button id="apod-button">Today's APOD</button>
+        <button id="apod-button2">Yesterday's APOD</button>
+        <hr>
+        <h3 id ="question"></h3>
+        <label for="">Answer</label>
+        <input type="text" id="input-answer">
+        <button id="submit-answer">GO</button>
         <hr>
     
         <div id="apod-display">
                 <img id="apodImage" class="image-style">
                 <video id="apodVideo"></video>
         </div>
-        <hr>
-        <h3 id ="question"></h3>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/app.js"></script>
