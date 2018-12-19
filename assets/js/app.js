@@ -106,6 +106,7 @@ $(document).on("click", "#apod-button2", function(){
         if (response.media_type == "image")
         {
             $("#apodImage").attr("src", response.hdurl)
+            localStorage.setItem("image2 url", response.hdurl)
         } else {
             $("#apodVideo").attr("src", response.hdurl)
         }
