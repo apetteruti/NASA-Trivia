@@ -7,6 +7,11 @@ var explanation =[]
 var localStorageArray =[]
 var score =0;
 $(document).on("click", "#apod-button", function(){
+    titleArray =[]
+     explanation =[]
+     index =[]
+     questionsArray = []
+     randomNumber =0
     var queryURL = 'https://api.nasa.gov/planetary/apod?&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
     $.ajax ({
         url: queryURL,
@@ -16,16 +21,13 @@ $(document).on("click", "#apod-button", function(){
         if (response.media_type == "image")
         {
             $("#apodImage").attr("src", response.hdurl)
+            localStorage.setItem("image url", response.hdurl)
         } else {
             $("#apodVideo").attr("src", response.hdurl)
         }
             $("#apod-title").text(response.title)
             $("#apod-des").text(response.explanation)
                 titleArray=(response.title.split(" "))
-                // explanation = response.explanation.split(" ")
-                // for (var i=0; i<10; i++){
-                //     titleArray.push(explanation[i])
-                // }
                 console.log(titleArray)
                 for (var i=0; i<titleArray.length;i++){
                     switch (titleArray[i]){
@@ -62,6 +64,9 @@ $(document).on("click", "#apod-button", function(){
                         case 'is':
                         titleArray[i] = ' '
                         break; 
+                        case 'and':
+                        titleArray[i] = ' '
+                        break; 
                         default:
                     }
                     
@@ -77,6 +82,7 @@ $(document).on("click", "#apod-button", function(){
 $(document).on("click", "#apod-button2", function(){
     titleArray =[]
      explanation =[]
+     index =[]
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1;
@@ -106,10 +112,6 @@ $(document).on("click", "#apod-button2", function(){
             $("#apod-title").text(response.title)
             $("#apod-des").text(response.explanation)
                 titleArray=(response.title.split(" "))
-                // explanation = response.explanation.split(" ")
-                // for (var i=0; i<10; i++){
-                //     titleArray.push(explanation[i])
-                // }
                 console.log(titleArray)
                 for (var i=0; i<titleArray.length;i++){
                     switch (titleArray[i]){
@@ -146,6 +148,9 @@ $(document).on("click", "#apod-button2", function(){
                         case 'is':
                         titleArray[i] = ' '
                         break; 
+                        case 'and':
+                        titleArray[i] = ' '
+                        break; 
                         default:
                     }   
                 }
@@ -155,6 +160,8 @@ $(document).on("click", "#apod-button2", function(){
 })
 
 function trivia (){ 
+    questionsArray =[];
+    titleArray =[];
     $("#trivia-display").empty()
    var x= $("<h3>")
    x.addClass("question")
@@ -169,7 +176,7 @@ function trivia (){
 
     // var queryURL = 'https://opentdb.com/api.php?amount=50';
      var queryURL = 'https://opentdb.com/api.php?amount=50&category=17';
-        titleArray.push('Galaxy','Earth','Mars','Moon')
+        titleArray.push('Galaxy','Earth','Mars','Moon','moon')
        console.log("2nd "+ titleArray)
     $.ajax ({
         url: queryURL,
@@ -177,7 +184,6 @@ function trivia (){
     }).then(function(response){
         console.log(response)
         var arrayOfWords =[]
-        var searchQs=[]
            for(var i=0; i<50 ; i++){
             arrayOfWords = response.results[i].question.split(" ")
              var filteredKeywords = arrayOfWords.filter((word) => titleArray.includes(word));
@@ -192,8 +198,6 @@ function trivia (){
                 randomNumber = Math.floor((Math.random() * (questionsArray.length -1)) + 0);
                 console.log(randomNumber)
                 $(".question").text(questionsArray[randomNumber])
-                localStorageArray.push(questionsArray[randomNumber])
-                console.log('questions '+localStorageArray)
                correctAnswer = response.results[index[randomNumber]].correct_answer;
                console.log('answer '+ correctAnswer)
     })
@@ -204,16 +208,11 @@ $(document).on("click",".submit-answer", function(){
    var x = $(".input-answer").val()
    console.log(x)
    if (x==correctAnswer){
-       alert("Correct")
        score ++;
        localStorage.setItem("score",score)
-       scoreVisual ()
+       $(".question").text("Your answer is correct. Score is "+ score)
    } else {
        alert ("Try again")
    }
 })
 
-function scoreVisual(){
-    var canvas = document.getElementById("#canvas-visual");
-    var ctx = canvas.getContext("2d");
-}
