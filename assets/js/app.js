@@ -217,3 +217,9 @@ $(document).on("click",".submit-answer", function(){
    }
 })
 
+$(document).on("click","#gallery", function(){
+  var image = $("<img>")
+  var url= localStorage.getItem("image url")
+  image.attr("src", url)
+  $("#my-gallery").html(image)
+})
