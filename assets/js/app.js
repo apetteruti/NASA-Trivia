@@ -4,7 +4,11 @@ var randomNumber
 var correctAnswer
 var index =[]
 var explanation =[]
+<<<<<<< HEAD
 var localStorageArray =[]
+=======
+var localStorage =[]
+>>>>>>> a143f9c7b5abcdc6c490c171134353dba2ddf2e9
 
 $(document).on("click", "#apod-button", function(){
     var queryURL = 'https://api.nasa.gov/planetary/apod?&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
@@ -192,6 +196,7 @@ function trivia (){
                 randomNumber = Math.floor((Math.random() * (questionsArray.length -1)) + 0);
                 console.log(randomNumber)
                 $(".question").text(questionsArray[randomNumber])
+<<<<<<< HEAD
                 localStorageArray.push(questionsArray[randomNumber])
                 localStorage.setItem("question", localStorageArray)
                 console.log('questions '+localStorageArray)
@@ -199,6 +204,17 @@ function trivia (){
                console.log('answer '+ correctAnswer)
     })
 }
+=======
+                localStorage.push(questionsArray[randomNumber]);
+                correctAnswer = response.results[index[randomNumber]].correct_answer;
+                console.log('answer '+ correctAnswer)
+                console.log(response.results)
+                
+            })
+        }
+        localStorage.setItem("question", (JSON.stringify(localStorage)));
+        console.log(localStorage);
+>>>>>>> a143f9c7b5abcdc6c490c171134353dba2ddf2e9
 
 $(document).on("click",".submit-answer", function(){
     console.log('Answer is '+ correctAnswer)
