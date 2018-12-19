@@ -3,9 +3,10 @@ var questionsArray = []
 var randomNumber
 var correctAnswer
 var index =[]
+var explanation =[]
 
 $(document).on("click", "#apod-button", function(){
-    var queryURL = 'https://api.nasa.gov/planetary/apod?date=2017-01-26&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
+    var queryURL = 'https://api.nasa.gov/planetary/apod?date=2018-11-25&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
     $.ajax ({
         url: queryURL,
         method: "GET"
@@ -20,6 +21,10 @@ $(document).on("click", "#apod-button", function(){
             $("#apod-title").text(response.title)
             $("#apod-des").text(response.explanation)
                 titleArray=(response.title.split(" "))
+                explanation = response.explanation.split(" ")
+                for (var i=0; i<10; i++){
+                    titleArray.push(explanation[i])
+                }
                 console.log(titleArray)
                 for (var i=0; i<titleArray.length;i++){
                     switch (titleArray[i]){
@@ -36,6 +41,21 @@ $(document).on("click", "#apod-button", function(){
                         titleArray[i] = ' '
                         break; 
                         case 'in':
+                        titleArray[i] = ' '
+                        break; 
+                        case 'Why':
+                        titleArray[i] = ' '
+                        break; 
+                        case 'this':
+                        titleArray[i] = ' '
+                        break;
+                        case 'a':
+                        titleArray[i] = ' '
+                        break; 
+                        case 'was':
+                        titleArray[i] = ' '
+                        break;
+                        case 'would':
                         titleArray[i] = ' '
                         break; 
                         default:
@@ -67,7 +87,7 @@ $(document).on("click", "#apod-button2", function(){
     today = yyyy + '-' + mm + '-' + dd;
     yesterday = yyyy + '-' + mm + '-' + (dd-1);
 
-    var queryURL = 'https://api.nasa.gov/planetary/apod?date=' +'2017-05-13'+ '&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
+    var queryURL = 'https://api.nasa.gov/planetary/apod?date=' +yesterday+ '&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
     $.ajax ({
         url: queryURL,
         method: "GET"
@@ -98,13 +118,11 @@ $(document).on("click", "#apod-button2", function(){
                         titleArray[i] = ' '
                         break; 
                         default:
-                    }
-                    
+                    }   
                 }
                 console.log('APOD2 Title ' +titleArray)
                 trivia(titleArray);
     })
-
 })
 
 function trivia (){ 
@@ -120,8 +138,9 @@ function trivia (){
    z.addClass("submit-answer")
    $("#trivia-display").append(z)
 
-    var queryURL = 'https://opentdb.com/api.php?amount=50&category=17';
-       titleArray.push('Space','planet')
+    // var queryURL = 'https://opentdb.com/api.php?amount=50';
+     var queryURL = 'https://opentdb.com/api.php?amount=50&category=17';
+        titleArray.push('Galaxy')
        console.log("2nd "+ titleArray)
     $.ajax ({
         url: queryURL,
