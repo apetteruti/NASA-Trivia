@@ -106,6 +106,10 @@ $(document).on("click", "#apod-button2", function(){
         if (response.media_type == "image")
         {
             $("#apodImage").attr("src", response.hdurl)
+            var addImage = $("<button>")
+            addImage.text('Add to Gallery')
+            addImage.addClass("btn waves-effect waves-light, color")
+            $("#right-buttons").prepend(addImage)
             localStorage.setItem("image2 url", response.hdurl)
         } else {
             $("#apodVideo").attr("src", response.hdurl)
