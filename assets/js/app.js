@@ -171,7 +171,7 @@ function trivia (){
    y.addClass("input-answer")
    $("#trivia-display").append(y)
    var z=$("<button>")
-   z.text('Go')
+   z.text('Submit')
    z.addClass("submit-answer btn waves-effect waves-light, color")
    $("#trivia-display").append(z)
 
