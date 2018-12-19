@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>NASA Trivia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
@@ -16,17 +16,26 @@
 
 <body>
     <nav>
-        <div class="nav-wrapper blue-grey">
+        <div class="nav-wrapper">
             <a href="#" class="brand-logo center"><img src="https://cdn.freebiesupply.com/logos/large/2x/nasa-6-logo-black-and-white.png"
                     alt="NASA-LOGO" width="120" height="100" href="https://www.nasa.gov/"></a>
 
-            <canvas id="canvas" width="1500" height="900"></canvas>
+            <canvas id="canvas" width="1500" height="1000"></canvas>
 
             <div class="container" id="container">
                 <hr>
-                <button class="btn waves-effect waves-light, red" id="apod-button">Today's APOD</button>
-                <button class="btn waves-effect waves-light, red" id="apod-button2">Yesterday's APOD</button>
-                <button class="btn waves-effect waves-light, red" id="gallery">My Gallery</button>
+                <div class = "row">
+                    <div class = "col s10 push-2">
+
+                        <button class="btn waves-effect waves-light, color" id="apod-button">Today's APOD</button>
+                        <button class="btn waves-effect waves-light, color" id="apod-button2">Yesterday's APOD</button>
+                    </div>
+
+                    <div class = "col s2 push-10">
+
+                        <button class="btn waves-effect waves-light, color" id="gallery">My Gallery</button>
+                    </div>
+                </div>
                 <hr>
 
                 <div class="row">

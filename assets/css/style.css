@@ -1,3 +1,11 @@
+.nav-wrapper{
+    background-color: #185dac;
+}
+
+.color{
+    background-color: #EE283F;
+}
+
 .apodImage {
     margin: 10px 10px 10px 10px;
     max-width: 450px;
