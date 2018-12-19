@@ -6,7 +6,6 @@ var index =[]
 var explanation =[]
 var localStorageArray =[]
 var score =0;
-
 $(document).on("click", "#apod-button", function(){
     var queryURL = 'https://api.nasa.gov/planetary/apod?&api_key=zkYUEw7ECaqPeKpeBYjmODSswcVqXlmZ0kNDQppU';
     $.ajax ({
