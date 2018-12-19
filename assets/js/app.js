@@ -219,6 +219,7 @@ $(document).on("click",".submit-answer", function(){
 
 $(document).on("click","#gallery", function(){
   var image = $("<img>")
+  image.addClass("gallery-images")
   var url= localStorage.getItem("image url")
   image.attr("src", url)
   $("#my-gallery").html(image)
