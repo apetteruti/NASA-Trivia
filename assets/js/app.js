@@ -164,15 +164,15 @@ function trivia (){
     questionsArray =[];
     titleArray =[];
     $("#trivia-display").empty()
-   var x= $("<h3>")
+   var x= $("<h5>")
    x.addClass("question")
    $("#trivia-display").append(x)
    var y=$("<input>")
    y.addClass("input-answer")
    $("#trivia-display").append(y)
    var z=$("<button>")
-   z.text('Go')
-   z.addClass("submit-answer")
+   z.text('Submit')
+   z.addClass("submit-answer btn waves-effect waves-light, color")
    $("#trivia-display").append(z)
 
     // var queryURL = 'https://opentdb.com/api.php?amount=50';
