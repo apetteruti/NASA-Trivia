@@ -216,8 +216,10 @@ $(document).on("click",".submit-answer", function(){
        score ++;
        localStorage.setItem("score",score)
        $(".question").text("Your answer is correct. Score is "+ score)
+       M.toast({html: "Your answer is correct! Score is " + score})
    } else {
-       alert ("Try again")
+       M.toast({html: "Try again!"});
+    //    alert ("Try again")
    }
 })
 

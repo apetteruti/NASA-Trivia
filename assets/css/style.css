@@ -40,4 +40,17 @@
 
 .input-answer{
 color: white;
+<<<<<<< HEAD
 }
+=======
+}
+
+#toast-container{
+    background-color:  #EE283F;
+    margin: 0 auto;
+    min-width: 10%;
+    top: 50%;
+    right: 50%;
+    transform: translateX(50%) translateY(50%);
+}
+>>>>>>> b90c0ec5ca573530e2181a13f383d8c8d1cee9b1
