@@ -18,6 +18,18 @@
     z-index: 1;
 
 }
-.question{
-    color: black;
+
+#apod-des{
+    line-height: 1.6;
+}
+
+#trivia-display{
+    position: relative;
+    /* z-index: 2; */
+    /* opacity: 0; */
+    /* background-color: pink; */
+}
+
+.input-answer{
+color: white;
 }

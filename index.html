@@ -15,30 +15,48 @@
 </head>
 
 <body>
-       <nav >
-               <div class="nav-wrapper blue-grey" >
-                 <a href="#" class="brand-logo center"><img src="https://cdn.freebiesupply.com/logos/large/2x/nasa-6-logo-black-and-white.png" alt="NASA-LOGO" width="120" height="100" href="https://www.nasa.gov/"></a>
+    <nav>
+        <div class="nav-wrapper blue-grey">
+            <a href="#" class="brand-logo center"><img src="https://cdn.freebiesupply.com/logos/large/2x/nasa-6-logo-black-and-white.png"
+                    alt="NASA-LOGO" width="120" height="100" href="https://www.nasa.gov/"></a>
 
-   <canvas id="canvas" width="1500" height="1500"></canvas>
-   <div class="container" id = "container">
-       <hr>
-       <button class="btn waves-effect waves-light, red"id="apod-button">Today's APOD</button>
-       <button class="btn waves-effect waves-light, red"id="apod-button2">Yesterday's APOD</button>
-       <hr>
+            <canvas id="canvas" width="1500" height="900"></canvas>
 
-       <div id="apod-display">
-           <img id="apodImage" class="image-style">
-           <video id="apodVideo" ></video>
-           <h3 id="apod-title"></h3>
-           <p id="apod-des"></p>
-       </div>
-       <hr>
-       <div id="trivia-display" class="card">
-       </div>
-       </div>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="./assets/js/app.js"></script>
-   <script src="./assets/js/stars.js"></script>
+            <div class="container" id="container">
+                <hr>
+                <button class="btn waves-effect waves-light, red" id="apod-button">Today's APOD</button>
+                <button class="btn waves-effect waves-light, red" id="apod-button2">Yesterday's APOD</button>
+                <hr>
+
+                <div class="row">
+
+                    <div class="col s7">
+                        <!-- <div id="apod-display"> -->
+                        <img id="apodImage" class="image-style">
+                        <video id="apodVideo"></video>
+                    </div>
+
+                    <div class="col s5">
+
+                        <h5 id="apod-title"></h5>
+                        <p id="apod-des"></p>
+                        <!-- </div> -->
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+
+                    <div id="trivia-display" >
+                        <h5 class="question"> </h5>
+                    </div>
+                </div>
+
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="./assets/js/app.js"></script>
+            <script src="./assets/js/stars.js"></script>
 </body>
 
 </html>
