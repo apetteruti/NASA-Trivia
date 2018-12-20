@@ -103,7 +103,7 @@ $(document).on("click", "#apod-button2", function () {
         if (response.media_type == "image") {
             $("#apodImage").attr("src", response.hdurl)
             var addImage = $("<a>")
-            addImage.addClass("btn-floating btn-large waves-effect waves-light red add-apod")
+            addImage.addClass("btn-floating btn-large waves-effect waves-light color add-apod")
             var f = $("<i>")
             f.text('+')
             f.addClass("material-icons")
@@ -201,28 +201,50 @@ $(document).on("click", ".submit-answer", function () {
     console.log('Answer is ' + correctAnswer)
     var x = $(".input-answer").val()
     console.log(x)
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    //Canvas dimensions
+    var W = 1500;
+    var H = 1500;
+    
+    // var pBar = document.getElementById('p');
+    // var updateProgress = function (score) {
+    //     pBar.value = score;
+    //     pBar.getElementsByTagName('value')[0].innerHTML = score;
+    
     if (x == correctAnswer) {
         score++;
         localStorage.setItem("score", score)
-        M.toast({ html: "Your answer is correct! Score is " + score })
+        M.toast({
+            html: "Your answer is correct! Score is " + score
+        })
+        $("#p").val(score);
+        
+        // updateProgress;
     } else {
-        M.toast({ html: "Try again!" });
+        M.toast({
+            html: "Try again!"
+        });
     }
+     console.log(score);
 })
 
-$(document).on("click", ".add-apod", function (){
-    M.toast({ html: "added to favorites" });
-    var galleryArray =[]
-    var titlesArray =[]
-   var currentUrl = localStorage.getItem('image url')
-   if (localStorage.getItem('gallery')){
-       galleryArray = localStorage.getItem('gallery').split(" ")
-       galleryArray.push(currentUrl)
-       localStorage.setItem('gallery', galleryArray)
-   } else {
-    galleryArray.push(currentUrl)
-    localStorage.setItem('gallery', galleryArray)
-   }
+$(document).on("click", ".add-apod", function () {
+    M.toast({
+        html: "added to favorites"
+    });
+    var galleryArray = []
+    var currentUrl = localStorage.getItem('image url')
+    if (localStorage.getItem('gallery')) {
+        galleryArray = localStorage.getItem('gallery').split(" ")
+        galleryArray.push(currentUrl)
+        localStorage.setItem('gallery', galleryArray)
+    } else {
+        galleryArray.push(currentUrl)
+        localStorage.setItem('gallery', galleryArray)
+    }
 })
 
 $(document).on("click", "#gallery", function () {
@@ -230,10 +252,10 @@ $(document).on("click", "#gallery", function () {
     $('html,body').animate({
         scrollTop: $("#my-gallery").offset().top},
         'slow');
-    galleryArray =[]
-    if (localStorage.getItem('gallery')){
+    galleryArray = []
+    if (localStorage.getItem('gallery')) {
         galleryArray = localStorage.getItem('gallery').split(",")
-        for (var i=0;i<galleryArray.length;i++){
+        for (var i = 0; i < galleryArray.length; i++) {
             var image = $("<img>")
             image.addClass("gallery-style")
             image.attr("src", galleryArray[i])
