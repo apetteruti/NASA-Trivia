@@ -6,14 +6,13 @@
     background-color: #EE283F;
 }
 
-.apodImage {
-    margin: 10px 10px 10px 10px;
+#apodImage {
+    margin: 10px 10px 0px 10px;
     max-width: 450px;
 }
 .image-style {
     max-width: 450px;
-    max-height: 450px;
-  
+    max-height: 450px; 
 }
 
 #canvas {
@@ -24,7 +23,6 @@
 
 #container {
     z-index: 1;
-
 }
 
 #apod-des{
@@ -40,9 +38,6 @@
 
 .input-answer{
 color: white;
-<<<<<<< HEAD
-}
-=======
 }
 
 #toast-container{
@@ -53,4 +48,12 @@ color: white;
     right: 50%;
     transform: translateX(50%) translateY(50%);
 }
->>>>>>> b90c0ec5ca573530e2181a13f383d8c8d1cee9b1
+#my-gallery {
+    text-align: center;
+
+}
+.gallery-style{
+    width:300px;
+    height: 300px;
+    margin: 10px 10px 10px 10px;
+}
