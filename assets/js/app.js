@@ -28,7 +28,7 @@ $(document).on("click", "#apod-button", function () {
             addImage.html(f)
             $("#apod-display").append(addImage)
             localStorage.setItem("image url", response.hdurl)
-            localStorage.setItem("title", response.title)
+            localStorage.setItem("title", response.title + '&')
         } else {
             $("#apodVideo").attr("src", response.hdurl)
         }
@@ -208,12 +208,12 @@ $(document).on("click", ".submit-answer", function () {
     //Canvas dimensions
     var W = 1500;
     var H = 1500;
-    
+
     // var pBar = document.getElementById('p');
     // var updateProgress = function (score) {
     //     pBar.value = score;
     //     pBar.getElementsByTagName('value')[0].innerHTML = score;
-    
+
     if (x == correctAnswer) {
         score++;
         localStorage.setItem("score", score)
@@ -221,14 +221,14 @@ $(document).on("click", ".submit-answer", function () {
             html: "Your answer is correct! Score is " + score
         })
         $("#p").val(score);
-        
+
         // updateProgress;
     } else {
         M.toast({
             html: "Try again!"
         });
     }
-     console.log(score);
+    console.log(score);
 })
 
 $(document).on("click", ".add-apod", function () {
@@ -236,30 +236,48 @@ $(document).on("click", ".add-apod", function () {
         html: "added to favorites"
     });
     var galleryArray = []
+    var titelsArray = []
     var currentUrl = localStorage.getItem('image url')
+    var currentTitle = localStorage.getItem('title')
     if (localStorage.getItem('gallery')) {
         galleryArray = localStorage.getItem('gallery').split(" ")
+        titelsArray = localStorage.getItem('titles').split("&")
         galleryArray.push(currentUrl)
+        titelsArray.push(currentTitle)
         localStorage.setItem('gallery', galleryArray)
+        localStorage.setItem('titles', titelsArray)
     } else {
         galleryArray.push(currentUrl)
+        titelsArray.push(currentTitle)
         localStorage.setItem('gallery', galleryArray)
+        localStorage.setItem('titles', titelsArray)
     }
+    console.log(galleryArray)
+    console.log(titelsArray)
 })
 
 $(document).on("click", "#gallery", function () {
     $("#my-gallery").empty()
     $('html,body').animate({
-        scrollTop: $("#my-gallery").offset().top},
+        scrollTop: $("#my-gallery").offset().top
+    },
         'slow');
     galleryArray = []
+    titelsArray = []
     if (localStorage.getItem('gallery')) {
         galleryArray = localStorage.getItem('gallery').split(",")
+        titelsArray = localStorage.getItem("titles").split(",,")
+        console.log(titelsArray)
         for (var i = 0; i < galleryArray.length; i++) {
+            var favDiv = $("<div>")
             var image = $("<img>")
+            var p = $("<p>")
+            p.text(titelsArray[i])
             image.addClass("gallery-style")
             image.attr("src", galleryArray[i])
-            $("#my-gallery").append(image)
+            favDiv.append(p)
+            favDiv.append(image)
+            $("#my-gallery").append(favDiv)
         }
     }
 })
