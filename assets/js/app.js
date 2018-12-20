@@ -224,6 +224,9 @@ $(document).on("click", ".add-apod", function (){
 
 $(document).on("click", "#gallery", function () {
     $("#my-gallery").empty()
+    $('html,body').animate({
+        scrollTop: $("#my-gallery").offset().top},
+        'slow');
     galleryArray =[]
     if (localStorage.getItem('gallery')){
         galleryArray = localStorage.getItem('gallery').split(",")
