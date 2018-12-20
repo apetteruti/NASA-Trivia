@@ -21,7 +21,13 @@
 #canvas {
     position: absolute;
     width: 100%;
-    z-index: -1;
+    z-index: -2;
+}
+
+#canvas2 {
+    position: absolute;
+    width: 100;
+    z-index: -1
 }
 
 #container {
@@ -62,7 +68,21 @@ color: white;
 }
 
 #progress{
-    transform: rotate(0.5turn);
+    transform: rotate(-0.25turn);
+    height: 100px;
+    width: 250px;
+    border: 3px;
+    border-style: solid;
+    margin: 0 auto;
     /* rotate: 180deg;
     rotate: .5turn; */
     }
+
+    /* progress::-webkit-progress-bar {
+        b;
+      } */
+
+      progress::-webkit-progress-value {
+        background-color: #7cc4ff;
+        background-image: url(../nasa-45072-unsplash.jpg);
+      }

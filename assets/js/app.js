@@ -202,7 +202,7 @@ $(document).on("click", ".submit-answer", function () {
     var x = $(".input-answer").val()
     console.log(x)
 
-    var canvas = document.getElementById("canvas");
+    var canvas = document.getElementById("canvas2");
     var ctx = canvas.getContext("2d");
 
     //Canvas dimensions
