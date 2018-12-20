@@ -28,6 +28,7 @@ $(document).on("click", "#apod-button", function () {
             addImage.html(f)
             $("#apod-display").append(addImage)
             localStorage.setItem("image url", response.hdurl)
+            localStorage.setItem("title", response.title)
         } else {
             $("#apodVideo").attr("src", response.hdurl)
         }
@@ -109,6 +110,7 @@ $(document).on("click", "#apod-button2", function () {
             addImage.html(f)
             $("#apod-display").append(addImage)
             localStorage.setItem("image url", response.hdurl)
+            localStorage.setItem("title", response.title)
         } else {
             $("#apodVideo").attr("src", response.hdurl)
         }
@@ -211,6 +213,7 @@ $(document).on("click", ".submit-answer", function () {
 $(document).on("click", ".add-apod", function (){
     M.toast({ html: "added to favorites" });
     var galleryArray =[]
+    var titlesArray =[]
    var currentUrl = localStorage.getItem('image url')
    if (localStorage.getItem('gallery')){
        galleryArray = localStorage.getItem('gallery').split(" ")
