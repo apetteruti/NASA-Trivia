@@ -8,12 +8,15 @@
 
 #apodImage {
     margin: 10px 10px 0px 10px;
-    max-width: 450px;
+    /* max-width: 450px; */
+    /* object-fit: contain; */
 }
-.image-style {
+
+/* .image-style {
     max-width: 450px;
     max-height: 450px; 
-}
+    /* object-fit: contain; */
+/* } */
 
 #canvas {
     position: absolute;
@@ -57,3 +60,9 @@ color: white;
     height: 300px;
     margin: 10px 10px 10px 10px;
 }
+
+#progress{
+    transform: rotate(0.5turn);
+    /* rotate: 180deg;
+    rotate: .5turn; */
+    }

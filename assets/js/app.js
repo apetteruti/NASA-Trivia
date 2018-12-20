@@ -218,7 +218,7 @@ $(document).on("click", ".submit-answer", function () {
         M.toast({
             html: "Your answer is correct! Score is " + score
         })
-        $("#p").val(score);
+        $("#progress").val(score);
         
         // updateProgress;
     } else {

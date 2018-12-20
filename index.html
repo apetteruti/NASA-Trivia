@@ -33,9 +33,9 @@
                 <hr>
                 <div class="row">
                     <div class="col s7">
-                        <img id="apodImage" class="image-style">
-                        <p id="apod-display"></p>
-                        <video id="apodVideo"></video>
+                            <img id="apodImage" class="responsive-img">
+                            <p id="apod-display"></p>
+                            <video id="apodVideo"></video>
                     </div>
                     <div class="col s5">
                         <h5 id="apod-title"></h5>
@@ -59,7 +59,9 @@
                 </div>
             </div>
 
-            <progress id='p' max='10' value = ''></progress>
+            <ul>
+                <li><progress id='progress' max='10' value=''></progress></li>
+            </ul>
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="./assets/js/app.js"></script>
